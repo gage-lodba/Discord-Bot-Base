@@ -2,8 +2,8 @@
   "name": "discord-bot-base",
   "module": "source/index.ts",
   "scripts": {
-    "start": "node --experimental-strip-types source/index.ts",
-    "register": "node --experimental-strip-types source/helpers/Register.ts",
+    "start": "node source/index.ts",
+    "register": "node source/helpers/Register.ts",
     "start:bun": "bun source/index.ts",
     "register:bun": "bun source/helpers/Register.ts"
   },

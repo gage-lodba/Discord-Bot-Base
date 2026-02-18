@@ -1,29 +1,39 @@
-import { Events } from "discord.js";
+import { Events, MessageFlags } from "discord.js";
 import Event from "../structure/event";
 import { Commands } from "../structure/command";
-import Write from "../helpers/logger";
+import Logger from "../helpers/logger";
 
 const interactionCreate: Event<Events.InteractionCreate> = {
   name: Events.InteractionCreate,
   execute: async (interaction) => {
     if (interaction.isChatInputCommand()) {
-      const command = Commands.find(
-        (cmd) => cmd.data.name === interaction.commandName,
-      );
+      const command = Commands.get(interaction.commandName);
       if (command == null) return;
 
       try {
-        await command.execute(interaction.client, interaction);
-        Write(
+        await command.execute(interaction);
+        Logger(
           `Command ${interaction.commandName} executed by ${interaction.user.username}[${interaction.user.id}].`,
           "green",
         );
-      } catch {
-        await interaction.reply({
-          content: "There was an error while executing this command!",
-          ephemeral: true,
-        });
-        Write("There was an error while executing this command!", "red");
+      } catch (err) {
+        Logger(`Error in /${interaction.commandName}: ${err instanceof Error ? err.message : String(err)}`, "red");
+
+        try {
+          if (interaction.replied || interaction.deferred) {
+            await interaction.followUp({
+              content: "There was an error while executing this command!",
+              flags: MessageFlags.Ephemeral,
+            });
+          } else {
+            await interaction.reply({
+              content: "There was an error while executing this command!",
+              flags: MessageFlags.Ephemeral,
+            });
+          }
+        } catch {
+          // Interaction may have expired or already been handled
+        }
       }
     }
   },

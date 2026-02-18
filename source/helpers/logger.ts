@@ -1,6 +1,4 @@
-type Dictionary<T> = Record<string, T>;
-
-const colors: Dictionary<string> = {
+const colors: Record<string, string> = {
   reset: "\x1b[0m",
   bright: "\x1b[1m",
   dim: "\x1b[2m",
@@ -20,13 +18,13 @@ const colors: Dictionary<string> = {
   crimson: "\x1b[38m",
 };
 
-export default function Write (
+export default function Logger (
   message: string,
   color = "white",
   reset = true,
 ): void {
-  if (message.length <= 0) return;
+  if (message.length === 0) return;
 
-  color = color.length > 0 ? colors[color.toLowerCase()] : colors.white;
-  console.log(color + message + (reset ? colors.reset : ""));
+  const resolved = colors[color.toLowerCase()] ?? colors.white;
+  console.log(resolved + message + (reset ? colors.reset : ""));
 }

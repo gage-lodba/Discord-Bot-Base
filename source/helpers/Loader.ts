@@ -1,5 +1,6 @@
 import { readdir } from "node:fs/promises";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
 import Logger from "./logger";
 
@@ -8,8 +9,7 @@ export default async function Load<T> (
   register: (o: T) => void,
 ): Promise<void> {
   Logger(`Loading ${directory}`, "cyan");
-  const path =
-    Bun.main.substring(0, Bun.main.lastIndexOf("\\")) + "\\" + directory;
+  const path = join(dirname(fileURLToPath(import.meta.url)), "..", directory);
   const files = await readdir(path);
 
   await Promise.all(
@@ -24,9 +24,7 @@ export default async function Load<T> (
         register(object);
         Logger(`[+] ${file} loaded.`, "cyan");
       } catch (err) {
-        Logger(`[-] ${file} failed to load.`, "red");
-
-        if (err instanceof Error) Logger(err.message, "red");
+        Logger(`[-] ${file} failed to load: ${err instanceof Error ? err.message : String(err)}`, "red");
       }
     }),
   );

@@ -1,5 +1,4 @@
 import {
-  Client,
   Collection,
   type SlashCommandOptionsOnlyBuilder,
   type ChatInputCommandInteraction,
@@ -12,7 +11,6 @@ export default class Command {
   public constructor (
     public data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder,
     public execute: (
-      client: Client,
       interaction: ChatInputCommandInteraction,
     ) => Promise<void>,
   ) { }

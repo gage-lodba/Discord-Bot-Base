@@ -1,17 +1,27 @@
 {
   "name": "discord-bot-base",
   "module": "source/index.ts",
+  "scripts": {
+    "start": "node --experimental-strip-types source/index.ts",
+    "register": "node --experimental-strip-types source/helpers/Register.ts",
+    "start:bun": "bun source/index.ts",
+    "register:bun": "bun source/helpers/Register.ts"
+  },
   "dependencies": {
-    "discord.js": "^14.16.1",
-    "dotenv": "^16.4.5"
+    "discord.js": "^14.25.1",
+    "dotenv": "^16.6.1"
   },
   "devDependencies": {
-    "@eslint/js": "^9.11.1",
-    "@types/bun": "latest",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "latest",
     "@types/eslint__js": "^8.42.3",
-    "eslint": "^9.11.1",
-    "typescript": "^5.6.2",
-    "typescript-eslint": "^8.8.0"
+    "eslint": "^10.0.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.0"
   },
-  "type": "module"
+  "type": "module",
+  "engines": {
+    "node": ">=22.6.0",
+    "bun": ">=1.0.0"
+  }
 }

@@ -1,8 +1,8 @@
 import { readdir } from "node:fs/promises";
 import { dirname, join } from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
-import Logger from "./logger";
+import Logger from "./logger.js";
 
 export default async function Load<T> (
   directory: string,
@@ -15,7 +15,7 @@ export default async function Load<T> (
   await Promise.all(
     files.map(async (file) => {
       try {
-        const { default: object } = (await import(join(path, file))) as {
+        const { default: object } = (await import(pathToFileURL(join(path, file)).href)) as {
           default: T | undefined;
         };
 

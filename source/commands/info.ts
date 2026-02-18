@@ -1,5 +1,5 @@
 import { ButtonStyle, ComponentType, MessageFlags, SlashCommandBuilder } from "discord.js";
-import Slash from "../structure/command";
+import Slash from "../structure/command.js";
 
 const info = new Slash(
   new SlashCommandBuilder()

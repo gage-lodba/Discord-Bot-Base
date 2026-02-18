@@ -4,7 +4,7 @@ A simple discord bot base to serve as a foundation for anyone's discord bot. Thi
 
 ### Runtime requirements
 
-Compatible with both [Bun](https://bun.sh/) (>=1.0.0) and [Node.js](https://nodejs.org/) (>=22.6.0).
+Compatible with both [Bun](https://bun.sh/) (>=1.0.0) and [Node.js](https://nodejs.org/) (>=18.0.0) via [tsx](https://tsx.is/).
 
 ### Creating a bot
 

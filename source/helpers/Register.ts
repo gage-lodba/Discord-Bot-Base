@@ -5,10 +5,10 @@ import {
 } from "discord.js";
 import { config } from "dotenv";
 
-import Logger from "./logger";
+import Logger from "./logger.js";
 
-import type Slash from "../structure/command";
-import Load from "./Loader";
+import type Slash from "../structure/command.js";
+import Load from "./Loader.js";
 config();
 
 if (!process.env.TOKEN) throw new Error("TOKEN is not defined.");

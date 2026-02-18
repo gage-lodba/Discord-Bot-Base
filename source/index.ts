@@ -11,10 +11,10 @@
 
 import { ActivityType, Client, type ClientEvents } from "discord.js";
 import { config } from "dotenv";
-import Load from "./helpers/Loader";
-import type Event from "./structure/event";
-import type Command from "./structure/command";
-import { Commands } from "./structure/command";
+import Load from "./helpers/Loader.js";
+import type Event from "./structure/event.js";
+import type Command from "./structure/command.js";
+import { Commands } from "./structure/command.js";
 config();
 
 if (!process.env.TOKEN) throw new Error("TOKEN is not defined.");

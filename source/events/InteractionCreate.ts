@@ -1,7 +1,7 @@
 import { Events, MessageFlags } from "discord.js";
-import Event from "../structure/event";
-import { Commands } from "../structure/command";
-import Logger from "../helpers/logger";
+import Event from "../structure/event.js";
+import { Commands } from "../structure/command.js";
+import Logger from "../helpers/logger.js";
 
 const interactionCreate: Event<Events.InteractionCreate> = {
   name: Events.InteractionCreate,

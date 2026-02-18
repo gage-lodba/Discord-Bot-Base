@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "discord.js";
-import Slash from "../structure/command";
+import Slash from "../structure/command.js";
 
 const ping = new Slash(
   new SlashCommandBuilder()

@@ -1,7 +1,7 @@
 import { Events } from "discord.js";
 
-import Event from "../structure/event";
-import Logger from "../helpers/logger";
+import Event from "../structure/event.js";
+import Logger from "../helpers/logger.js";
 
 const clientReady: Event<Events.ClientReady> = {
   name: Events.ClientReady,

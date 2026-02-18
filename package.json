@@ -2,8 +2,8 @@
   "name": "discord-bot-base",
   "module": "source/index.ts",
   "scripts": {
-    "start": "node source/index.ts",
-    "register": "node source/helpers/Register.ts",
+    "start": "tsx source/index.ts",
+    "register": "tsx source/helpers/Register.ts",
     "start:bun": "bun source/index.ts",
     "register:bun": "bun source/helpers/Register.ts"
   },
@@ -14,6 +14,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@types/node": "latest",
+    "tsx": "latest",
     "@types/eslint__js": "^8.42.3",
     "eslint": "^10.0.0",
     "typescript": "^5.9.3",
@@ -21,7 +22,7 @@
   },
   "type": "module",
   "engines": {
-    "node": ">=22.6.0",
+    "node": ">=18.0.0",
     "bun": ">=1.0.0"
   }
 }
